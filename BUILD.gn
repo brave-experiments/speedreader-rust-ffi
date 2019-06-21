@@ -1,0 +1,62 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("config.gni")
+import("//brave/build/cargo.gni")
+import("//brave/test/testing.gni")
+
+config("external_config") {
+  include_dirs = [ "src" ]
+  defines = [
+    "NO_CXXEXCEPTIONS=1"
+  ]
+}
+
+source_set("speedreadder_ffi") {
+  public_configs = [ ":external_config" ]
+
+  sources = [
+    "src/wrapper.cpp",
+    "src/wrapper.hpp"
+  ]
+
+  deps = [
+    "//base",
+    ":speedreader"
+  ]
+
+  libs = [ speedreader_lib_path ]
+
+  if (is_mac || is_ios ) {
+    libs += [
+      "Security.framework"
+    ]
+  }
+}
+
+if (speedreader_shared_lib_install_name != "") {
+  fix_testing_install_name("test_speedreader_install_name") {
+    current_path = speedreader_shared_lib_install_name
+    new_path = "@executable_path/" + rebase_path(speedreader_lib_path, root_build_dir)
+  }
+} else {
+    group("test_speedreader_install_name") {}
+}
+
+cargo_build("speedreader") {
+  inputs = [
+    "Cargo.toml",
+    "src/lib.h",
+    "src/lib.rs",
+  ]
+
+  rust_flags = speedreader_flags
+  output = speedreader_lib_path
+
+  manifest_path = "Cargo.toml"
+
+  build_path = speedreader_build_path
+
+  target = speedreader_target
+}

@@ -1,0 +1,26 @@
+[package]
+name = "speedreader-ffi"
+version = "0.1.0"
+authors = ["Andrius Aucinas <aaucinas@brave.com>"]
+edition = "2018"
+
+[dependencies]
+speedreader = { git = "ssh://git@github.com/brave-experiments/SpeedReader.git" }
+
+libc = "0.2"
+
+[lib]
+crate-type = [
+    "cdylib",
+    "staticlib",
+]
+name = "speedreader"
+
+[features]
+cbindgen = []
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
