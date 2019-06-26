@@ -299,7 +299,7 @@ dependencies = [
 [[package]]
 name = "readability"
 version = "0.1.4"
-source = "git+ssh://git@github.com/brave-experiments/SpeedReader.git#2e7ca54921a0c3e17151b7ae2a3ce9a196c9a6e5"
+source = "git+ssh://git@github.com/brave-experiments/SpeedReader.git#667c5a16c270848b1eed8f04bd8b5bb709077934"
 dependencies = [
  "html5ever 0.23.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -383,7 +383,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "speedreader"
 version = "0.1.0"
-source = "git+ssh://git@github.com/brave-experiments/SpeedReader.git#2e7ca54921a0c3e17151b7ae2a3ce9a196c9a6e5"
+source = "git+ssh://git@github.com/brave-experiments/SpeedReader.git#667c5a16c270848b1eed8f04bd8b5bb709077934"
 dependencies = [
  "html5ever 0.23.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "lazy_static 1.3.0 (registry+https://github.com/rust-lang/crates.io-index)",

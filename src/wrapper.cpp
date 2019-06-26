@@ -8,13 +8,19 @@ extern "C" {
 
 namespace speedreader {
 
-SpeedReader::SpeedReader() {}
+SpeedReader::SpeedReader(): raw(speedreader_create("")) {}
 
-bool SpeedReader::process(const std::string& content, const std::string& url,
-    std::string* transformed) {
+void SpeedReader::reset(const char* url) {
+  raw = speedreader_create(url);
+}
+
+void SpeedReader::pumpContent(const char* content) {
+  speedreader_pump(raw, content);
+}
+
+bool SpeedReader::finalize(char** transformed) {
   char* transformed_char_ptr = nullptr;
-  bool result = speedreader_process(content.c_str(), url.c_str(),
-    &transformed_char_ptr);
+  bool result = speedreader_finalize(raw, &transformed_char_ptr);
   if (transformed_char_ptr) {
     if (transformed) {
       *transformed = transformed_char_ptr;

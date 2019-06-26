@@ -22,8 +22,10 @@ void Check(bool expected_readable,
     SpeedReader& reader, const std::string& content, const std::string& url) {
   cout << test_description << "... ";
   
-  std::string transformed;
-  bool readable = reader.process(content, url, &transformed);
+  char* transformed;
+  reader.reset(url.c_str());
+  reader.pumpContent(content.c_str());
+  bool readable = reader.finalize(&transformed);
 
   if (expected_readable != readable) {
     num_failed++;

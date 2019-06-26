@@ -13,13 +13,16 @@ namespace speedreader {
 class SpeedReader {
  public:
   SpeedReader();
-  bool process(const std::string& content, const std::string& url,
-      std::string *transformed);
+  void reset(const char* url);
+  void pumpContent(const char *content);
+  bool finalize(char **transformed);
+
   ~SpeedReader();
 
  private:
   SpeedReader(const SpeedReader&) = delete;
   void operator=(const SpeedReader&) = delete;
+  C_SpeedReader* raw;
 };
 
 }  // namespace speedreader
