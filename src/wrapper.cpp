@@ -18,7 +18,7 @@ void SpeedReader::pumpContent(const char* content) {
   speedreader_pump(raw, content);
 }
 
-bool SpeedReader::finalize(char** transformed) {
+bool SpeedReader::finalize(std::string* transformed) {
   char* transformed_char_ptr = nullptr;
   bool result = speedreader_finalize(raw, &transformed_char_ptr);
   if (transformed_char_ptr) {

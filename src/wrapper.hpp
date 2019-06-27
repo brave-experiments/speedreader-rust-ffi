@@ -15,7 +15,7 @@ class SpeedReader {
   SpeedReader();
   void reset(const char* url);
   void pumpContent(const char *content);
-  bool finalize(char **transformed);
+  bool finalize(std::string* transformed);
 
   ~SpeedReader();
 
