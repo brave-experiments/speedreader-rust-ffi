@@ -25,8 +25,8 @@ pub unsafe extern "C" fn speedreader_pump(
     let speedreader = Box::leak(Box::from_raw(speedreader));
 
     if speedreader.document_readable() != Some(false) {
-        let content = CStr::from_ptr(content).to_bytes();
-        speedreader.with_chunk(content);
+        let mut content = CStr::from_ptr(content).to_bytes();
+        speedreader.with_chunk(&mut content);
     }
 }
 
