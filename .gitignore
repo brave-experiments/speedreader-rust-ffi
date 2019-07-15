@@ -3,3 +3,4 @@
 **/*.rs.bk
 .gdb_history
 .vscode
+Cargo.lock
