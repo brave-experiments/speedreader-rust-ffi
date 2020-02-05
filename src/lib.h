@@ -11,7 +11,7 @@ typedef struct C_SpeedReader C_SpeedReader;
 /**
  * Destroy a `*c_char` once you are done with it.
  */
-void c_char_destroy(char *s);
+void speedreader_c_char_destroy(char *s);
 
 /**
  * Create a new `SpeedReader instance`.

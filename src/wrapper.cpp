@@ -25,7 +25,7 @@ bool SpeedReader::finalize(std::string* transformed) {
     if (transformed) {
       *transformed = transformed_char_ptr;
     }
-    c_char_destroy(transformed_char_ptr);
+    speedreader_c_char_destroy(transformed_char_ptr);
   }
   return result;
 }
